@@ -18,7 +18,7 @@ jobs:
       - name: Login to Prefect Cloud
         env:
           PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
-          PREFECT_WORKSPACE: "Mestrado, Graziela/default" # 👈 Substitua pelo SEU
+          PREFECT_WORKSPACE: "mestrado-graziela/default"
         run: |
           prefect cloud login --key $env:PREFECT_API_KEY --workspace $env:PREFECT_WORKSPACE
           
