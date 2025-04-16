@@ -1,29 +1,26 @@
-name: Deploy Hello World
+name: Deploy to Prefect Cloud
 on: [push]
 
 jobs:
   deploy:
     runs-on: windows-latest
     steps:
-      # 1. Baixa o código
       - uses: actions/checkout@v4
-
-      # 2. Configura Python
+      
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12.5"
-
-      # 3. Instala o Prefect
-      - name: Install Prefect
+          python-version: "3.12"
+          
+      - name: Install dependencies
         run: pip install prefect
 
-      # 4. Autentica no Prefect Cloud
       - name: Login to Prefect Cloud
         env:
           PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
-        run: prefect cloud login --key $env:PREFECT_API_KEY
-
-      # 5. Registra o deployment
+          PREFECT_WORKSPACE: "Mestrado, Graziela/default" # 👈 Substitua pelo SEU
+        run: |
+          prefect cloud login --key $env:PREFECT_API_KEY --workspace $env:PREFECT_WORKSPACE
+          
       - name: Deploy Flow
         run: python deployments/deploy_hello.py
