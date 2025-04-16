@@ -24,3 +24,5 @@ jobs:
           
       - name: Deploy Flow
         run: python deployments/deploy_hello.py
+        env:
+          PYTHONPATH: ${{ github.workspace }}
