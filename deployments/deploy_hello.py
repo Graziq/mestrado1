@@ -1,10 +1,14 @@
+import sys
+from pathlib import Path
+
+# Adiciona o diretório raiz ao caminho Python
+sys.path.append(str(Path(__file__).parent.parent))
+
 from flows.hello import hello_world
 
 if __name__ == "__main__":
-    hello_world.deploy(
-        name="hello-every-30min",
-        schedule="*/30 * * * *",
-        work_pool_name="default-agent-pool",
-        tags=["demo"],
+    hello_world.serve(
+        name="hello-world-30min",
+        cron="*/30 * * * *",
+        tags=["demo"]
     )
-
