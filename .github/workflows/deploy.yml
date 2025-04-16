@@ -25,5 +25,4 @@ jobs:
       - name: Deploy Flow
         run: python deployments/deploy_hello.py
         env:
-          PREFECT_DEFAULT_WORK_POOL_NAME: "default-agent-pool"
           PYTHONPATH: ${{ github.workspace }}

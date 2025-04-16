@@ -4,7 +4,7 @@ if __name__ == "__main__":
     hello_world.deploy(
         name="hello-every-30min",
         schedule="*/30 * * * *",
-        work_pool_name="default-agent-pool",  # Substitua com o nome do seu Work Pool
+        work_pool_name="default-agent-pool",
         tags=["demo"],
     )
 
